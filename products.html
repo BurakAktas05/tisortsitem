@@ -11,6 +11,7 @@
     <nav>
       <a href="index.html">Ana Sayfa</a> |
       <a href="products.html">Ürünler</a>
+      <a href="sepet.html">Sepetim</a>
     </nav>
   </header>
 
@@ -19,14 +20,24 @@
     <div class="product">
       <img src="https://via.placeholder.com/200" alt="Tişört 1">
       <p>Siyah Basic Tişört</p>
-      <button>Satın Al</button>
+      <button onclick="sepeteEkle('Siyah Basic Tişört')">Sepete Ekle</button>
+
     </div>
 
     <div class="product">
       <img src="https://via.placeholder.com/200" alt="Tişört 2">
       <p>Beyaz Oversize Tişört</p>
-      <button>Satın Al</button>
+      <button onclick="sepeteEkle('Beyaz Oversize Tişört')">Sepete Ekle</button>
     </div>
   </main>
+  <script>
+    function sepeteEkle(urunAdi) {
+      let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
+      sepet.push(urunAdi);
+      localStorage.setItem("sepet", JSON.stringify(sepet));
+      alert(urunAdi + " sepete eklendi!");
+    }
+  </script>
+  
 </body>
 </html>
